@@ -55,7 +55,7 @@ export default {
   },
   data() {
     return {
-      url: "http://localhost:3000/books",
+      url: "http://39.100.81.23:3000/books",
       maxId: 2,
       book: { name: "", price: "" },
       books: [],
