@@ -51,12 +51,11 @@ export default {
   created() {
     fetch(this.url, { method: "GET" })
       .then(res => res.json())
-      .then(bks => (this.books = bks.body));
+      .then(bks => (this.books = bks));
   },
   data() {
     return {
-      url: "http://39.100.81.23:3000/books",
-      maxId: 2,
+      url: "http://localhost:3000/books",
       book: { name: "", price: "" },
       books: [],
       curbook: {},
@@ -80,7 +79,7 @@ export default {
       })
         .then(res => res.json())
         .then(nb => {
-          this.books.push(nb.body);
+          this.books.push(nb);
           this.book = { name: "", price: "" };
         });
     },
@@ -97,9 +96,8 @@ export default {
         }
       })
         .then(res => res.json())
-        .then(data => {
-          let book = data.body;
-          let index = this.books.findIndex(item => book._id == item.id);
+        .then(book => {
+          let index = this.books.findIndex(item => book._id == item._id);
           this.books.splice(index, 1, book);
           this.dialogVisible = false;
         });
